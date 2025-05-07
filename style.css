@@ -111,13 +111,101 @@ a:hover {
 
 /* Hero Section specific styles (index.html) */
 #hero {
-    background-color: #eaf2f8; /* A slightly different shade for emphasis */
     text-align: center;
     padding: 3em 1.5em;
 }
 
+.full-width-hero {
+    background-color: var(--color-accent); /* Example: use accent color for bg */
+    /* Or use a background image: 
+    background-image: url('images/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    */
+    color: var(--color-header-bg); /* White text on darker background */
+    padding: 5em 1.5em;
+    text-align: center;
+    margin-bottom: 2.5em; /* Match section margin */
+}
+
+.hero-content h1 {
+    color: var(--color-header-bg); /* Ensure h1 in hero is light */
+    font-size: 3em; /* Larger for hero */
+    margin-bottom: 0.5em;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-header-bg); /* White button */
+    color: var(--color-accent); /* Accent color text */
+    padding: 0.8em 1.8em;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid transparent; /* For consistent sizing */
+}
+
+.cta-button:hover {
+    background-color: var(--color-bg); /* Off-white bg on hover */
+    color: var(--color-accent);
+    text-decoration: none;
+    border: 2px solid var(--color-accent);
+}
+
+/* Content Section Styling */
+.content-section {
+    /* Uses default section styling defined earlier */
+    /* margin-bottom: 2.5em; padding: 1.5em; background-color: var(--color-section-bg); ... */
+}
+
+.supporting-image {
+    width: 100%;
+    max-width: 500px; /* Control max size */
+    height: auto;
+    margin: 1.5em auto; /* Center it */
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.numbered-highlights {
+    margin-top: 1.5em;
+    padding-left: 0; /* Reset padding if ol/ul used directly */
+}
+
+.numbered-highlights h3 {
+    margin-bottom: 0.75em;
+    font-size: 1.3em;
+}
+
+.numbered-highlights ol {
+    list-style-type: decimal;
+    padding-left: 20px; /* Indent list */
+    margin:0;
+}
+
+.numbered-highlights ol li {
+    margin-bottom: 0.8em;
+    line-height: 1.7;
+}
+
+.numbered-highlights ol li strong {
+    font-weight: 500; /* Make titles in list items slightly bolder */
+    color: var(--color-heading);
+}
+
 #hero h1 {
-    color: #1f618d;
+    color: var(--color-heading); /* Reverted to default, or use accent if bg is light */
+    /* If hero BG is dark, ensure this is light: color: var(--color-header-bg); */
 }
 
 /* Partner Page Specific Styles */
@@ -150,10 +238,41 @@ a:hover {
 /* Footer */
 footer {
     text-align: center;
-    padding: 1.5em 0;
-    background-color: #34495e;
-    color: #ecf0f1;
-    margin-top: 2em;
+    padding: 2em 0 1.5em 0; /* Adjusted padding */
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    margin-top: 3em; /* Increased top margin */
+}
+
+.footer-nav {
+    margin-bottom: 1em;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.footer-nav ul li {
+    margin: 0 10px;
+}
+
+.footer-nav ul li a {
+    text-decoration: none;
+    color: var(--color-footer-text); /* Use footer text color for links */
+    font-weight: 400;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.9;
+}
+
+.footer-nav ul li a:hover {
+    color: var(--color-accent); /* Accent color on hover */
+    opacity: 1;
+    text-decoration: underline;
 }
 
 footer p {
