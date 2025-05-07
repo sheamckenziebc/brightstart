@@ -1,0 +1,7 @@
+<!-- Placeholder SVG map. Please replace with actual SVG code or linked .svg file. -->
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#eeeeee" />
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="var(--font-body)" font-size="20" fill="#777777">
+        Placeholder: Western Canada Service Area Map (BC, AB, SK, MB)
+    </text>
+</svg> 

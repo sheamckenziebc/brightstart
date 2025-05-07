@@ -1,19 +1,34 @@
+:root {
+    --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --color-bg: #F9F9F7;
+    --color-text: #333333;
+    --color-accent: #5BA3C0;
+    --color-header-bg: #FFFFFF;
+    --color-header-border: #E0E0E0;
+    --color-footer-bg: #34495E; 
+    --color-footer-text: #ECF0F1;
+    --color-logo: #2c3e50; 
+    --color-section-bg: #FFFFFF;
+    --color-section-shadow: rgba(0,0,0,0.05);
+    --color-heading: #2c3e50; 
+}
+
 /* General Body Styles */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-family: var(--font-body);
     font-weight: 300;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #fafafa; /* Calm off-white */
-    color: #333;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 /* Header and Navigation */
 header {
-    background-color: #fff;
+    background-color: var(--color-header-bg);
     padding: 1em 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--color-header-border);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -31,7 +46,7 @@ nav {
 .logo {
     font-size: 1.8em;
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--color-logo);
 }
 
 nav ul {
@@ -47,14 +62,15 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #3498db;
+    color: var(--color-accent);
     font-weight: 400;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: #2980b9;
+    color: var(--color-accent);
+    opacity: 0.8;
 }
 
 /* Main Content Area */
@@ -67,15 +83,15 @@ main {
 section {
     margin-bottom: 2.5em;
     padding: 1.5em;
-    background-color: #fff;
+    background-color: var(--color-section-bg);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px var(--color-section-shadow);
 }
 
 /* Headings */
 h1, h2, h3 {
-    color: #2c3e50; /* Darker shade for headings */
-    font-weight: 400; /* Slightly bolder for headings */
+    color: var(--color-heading);
+    font-weight: 400;
 }
 
 h1 {
@@ -101,7 +117,7 @@ p {
 }
 
 a {
-    color: #3498db;
+    color: var(--color-accent);
     text-decoration: none;
 }
 
@@ -116,21 +132,16 @@ a:hover {
 }
 
 .full-width-hero {
-    background-color: var(--color-accent); /* Example: use accent color for bg */
-    /* Or use a background image: 
-    background-image: url('images/hero-background.jpg');
-    background-size: cover;
-    background-position: center;
-    */
-    color: var(--color-header-bg); /* White text on darker background */
+    background-color: var(--color-accent);
+    color: var(--color-header-bg);
     padding: 5em 1.5em;
     text-align: center;
-    margin-bottom: 2.5em; /* Match section margin */
+    margin-bottom: 2.5em;
 }
 
 .hero-content h1 {
-    color: var(--color-header-bg); /* Ensure h1 in hero is light */
-    font-size: 3em; /* Larger for hero */
+    color: var(--color-header-bg);
+    font-size: 3em;
     margin-bottom: 0.5em;
 }
 
@@ -144,18 +155,18 @@ a:hover {
 
 .cta-button {
     display: inline-block;
-    background-color: var(--color-header-bg); /* White button */
-    color: var(--color-accent); /* Accent color text */
+    background-color: var(--color-header-bg);
+    color: var(--color-accent);
     padding: 0.8em 1.8em;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border: 2px solid transparent; /* For consistent sizing */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: 2px solid var(--color-header-bg);
 }
 
 .cta-button:hover {
-    background-color: var(--color-bg); /* Off-white bg on hover */
+    background-color: var(--color-bg);
     color: var(--color-accent);
     text-decoration: none;
     border: 2px solid var(--color-accent);
@@ -199,13 +210,12 @@ a:hover {
 }
 
 .numbered-highlights ol li strong {
-    font-weight: 500; /* Make titles in list items slightly bolder */
+    font-weight: 500;
     color: var(--color-heading);
 }
 
 #hero h1 {
-    color: var(--color-heading); /* Reverted to default, or use accent if bg is light */
-    /* If hero BG is dark, ensure this is light: color: var(--color-header-bg); */
+    color: var(--color-heading);
 }
 
 /* Partner Page Specific Styles */
@@ -215,11 +225,12 @@ a:hover {
 
 .partner-profile {
     padding-left: 1em;
-    border-left: 3px solid #3498db;
+    border-left: 3px solid var(--color-accent);
 }
 
 .partner-profile h3 {
-    color: #2980b9;
+    color: var(--color-accent);
+    opacity: 0.9;
 }
 
 .partner-profile p strong {
@@ -238,10 +249,10 @@ a:hover {
 /* Footer */
 footer {
     text-align: center;
-    padding: 2em 0 1.5em 0; /* Adjusted padding */
+    padding: 2em 0 1.5em 0;
     background-color: var(--color-footer-bg);
     color: var(--color-footer-text);
-    margin-top: 3em; /* Increased top margin */
+    margin-top: 3em;
 }
 
 .footer-nav {
@@ -263,14 +274,14 @@ footer {
 
 .footer-nav ul li a {
     text-decoration: none;
-    color: var(--color-footer-text); /* Use footer text color for links */
+    color: var(--color-footer-text);
     font-weight: 400;
     transition: color 0.3s ease, opacity 0.3s ease;
     opacity: 0.9;
 }
 
 .footer-nav ul li a:hover {
-    color: var(--color-accent); /* Accent color on hover */
+    color: var(--color-accent);
     opacity: 1;
     text-decoration: underline;
 }
@@ -304,4 +315,246 @@ footer p {
     h2 {
         font-size: 1.75em;
     }
+}
+
+/* Trust Bar Styling */
+#trust-bar {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: var(--color-bg); /* Match body background or slightly different */
+}
+
+#trust-bar h3 {
+    margin-bottom: 1em;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.partner-logos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Spacing between logos */
+}
+
+.partner-logos span {
+    font-style: italic;
+    color: #777; /* Placeholder text color */
+    padding: 10px;
+    border: 1px dashed #ccc; /* Placeholder border */
+    display: inline-block;
+}
+
+/* Pain Points Cards Styling */
+#pain-points h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+#pain-points > p {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+}
+
+.pain-points-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Spacing between cards */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.card {
+    background-color: var(--color-section-bg);
+    border: 1px solid var(--color-header-border);
+    border-radius: 8px;
+    padding: 1.5em;
+    flex-basis: calc(33.333% - 20px); /* Adjust for gap, for 3 cards */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    font-size: 1.3em;
+    color: var(--color-accent);
+    margin-top: 0;
+    margin-bottom: 0.75em;
+}
+
+.card p {
+    font-size: 0.95em;
+    line-height: 1.7;
+}
+
+/* CTA Banner specific styling (if different from hero) */
+#cta-banner h2 {
+    color: var(--color-header-bg);
+    font-size: 2.2em; /* Slightly smaller than main hero H1 */
+}
+
+/* Services Page Tab-like Content Styling */
+.tabs-container {
+    /* Container for all service tab content blocks */
+}
+
+.service-tab-content {
+    background-color: var(--color-section-bg);
+    padding: 1.5em;
+    margin-bottom: 1.5em; /* Space between each service block */
+    border-radius: 8px;
+    border: 1px solid var(--color-header-border);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.service-tab-content h2 {
+    color: var(--color-accent);
+    margin-top: 0;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.4em;
+    margin-bottom: 1em;
+}
+
+.partner-badge {
+    margin-top: 1em;
+    padding: 0.5em;
+    background-color: var(--color-bg);
+    border: 1px dashed var(--color-accent);
+    border-radius: 4px;
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* Process Page Timeline Styling */
+#process-timeline h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative; /* For pseudo-element line */
+}
+
+/* Draw a line for the timeline - optional visual enhancement */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px; /* Adjust based on step-number size and padding */
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--color-accent);
+    opacity: 0.3;
+    border-radius: 2px;
+}
+
+.timeline-step {
+    margin-bottom: 2em;
+    position: relative;
+    padding-left: 50px; /* Space for the step number and line */
+    display: flex; /* Align number and content */
+    align-items: flex-start;
+}
+
+.timeline-step-number {
+    background-color: var(--color-accent);
+    color: var(--color-header-bg);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 0; /* Align with top of content */
+    z-index: 1; /* Above the timeline line */
+}
+
+.timeline-step-content {
+    background-color: var(--color-section-bg);
+    padding: 1.5em;
+    border-radius: 8px;
+    border: 1px solid var(--color-header-border);
+    margin-left: 10px; /* Spacing from the number */
+    flex: 1;
+}
+
+.timeline-step-content h3 {
+    margin-top: 0;
+    color: var(--color-accent);
+    font-size: 1.4em;
+}
+
+.timeline-step-content p {
+    margin-bottom: 0;
+}
+
+/* Contact Page Form & Map Styling */
+#contact-form-section h2,
+#service-area-map h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#contact-form-section > p {
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+}
+
+#contact-form .form-group {
+    margin-bottom: 1.5em;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form textarea {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid var(--color-header-border);
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#contact-form button.cta-button {
+    /* Uses existing .cta-button styles */
+    /* Add any specific overrides if needed */
+    width: auto; /* Or 100% for full-width button */
+    cursor: pointer;
+}
+
+.map-placeholder {
+    /* Styles for img are inline, this is for any container needs */
+    margin-top: 1em;
 } 
