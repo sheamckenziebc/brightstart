@@ -38,9 +38,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 1em;
+    padding: 0 2em;
 }
 
 .logo {
@@ -75,17 +73,13 @@ nav ul li a.active {
 
 /* Main Content Area */
 main {
-    max-width: 1100px;
-    margin: 2em auto;
-    padding: 0 1em;
+    padding: 2em 0;
 }
 
 section {
     margin-bottom: 2.5em;
-    padding: 1.5em;
+    padding: 1.5em 2em;
     background-color: var(--color-section-bg);
-    border-radius: 8px;
-    box-shadow: 0 2px 10px var(--color-section-shadow);
 }
 
 /* Headings */
@@ -133,14 +127,15 @@ a:hover {
 
 .full-width-hero {
     /* background-color: var(--color-accent); */ /* Replaced by background image */
-    background-image: url('images/vet med 1 .png');
+    background-image: url('images/vet med 1.png'); /* Corrected filename with space before .png */
     background-size: cover;
     background-position: center center;
-    position: relative; /* For the overlay */
+    position: relative; /* For the overlay and blur */
     color: var(--color-header-bg); 
     padding: 6em 1.5em; /* Adjusted padding for better visual with bg image */
     text-align: center;
     margin-bottom: 2.5em; 
+    overflow: hidden; /* To contain the blurred pseudo-element if it extends */
 }
 
 /* Add an overlay to soften the image behind the text */
@@ -155,13 +150,30 @@ a:hover {
     z-index: 1; /* Ensure overlay is behind content but above background image */
 }
 
+/* Pseudo-element for the blur effect on the background image itself */
+/* This is an alternative or addition to the overlay. If using both, the overlay will be on top of the blurred image. */
+.full-width-hero::after {
+    content: '';
+    position: absolute;
+    top: -10px; /* Extend slightly to avoid edge artifacts from blur */
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-image: inherit; /* Inherit the background image from the parent */
+    background-size: cover;
+    background-position: center center;
+    filter: blur(3px); /* Adjust blur radius as needed */
+    z-index: 0; /* Behind the overlay and content */
+}
+
 .hero-content {
-    position: relative; /* Ensure content is above the overlay */
+    position: relative; /* Ensure content is above the overlay and blurred background */
     z-index: 2;
 }
 
-.hero-content h1 {
-    color: var(--color-header-bg);
+/* More specific rule for the hero headline */
+section#hero.full-width-hero div.hero-content h1 {
+    color: var(--color-header-bg); /* Should be pure white #FFFFFF */
     font-size: 3em;
     margin-bottom: 0.5em;
 }
@@ -199,14 +211,75 @@ a:hover {
     /* margin-bottom: 2.5em; padding: 1.5em; background-color: var(--color-section-bg); ... */
 }
 
-.supporting-image {
+/* Remove or repurpose old .supporting-image styles if they are not used elsewhere */
+/* .supporting-image {
     width: 100%;
-    max-width: 500px; /* Control max size */
+    max-width: 500px; 
     height: auto;
-    margin: 1.5em auto; /* Center it */
+    margin: 1.5em auto; 
     display: block;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+} */
+
+/* Image Slider Styles */
+.image-slider-container {
+    max-width: 700px; /* Constrain the frame width */
+    height: 450px;  /* Constrain the frame height, adjust as needed */
+    margin: 2em auto; /* Center the slider */
+    overflow: hidden;   /* Crucial to hide parts of images outside the frame */
+    position: relative; /* Optional: For potential future controls */
+    background-color: #eee; /* Placeholder bg if images are slow to load */
+}
+
+.image-slider {
+    display: flex;
+    width: 500%; /* 5 images (4 unique + 1 duplicate) * 100% */
+    height: 100%;
+    animation: scrollImages 20s linear infinite; /* Adjust 20s duration as needed */
+}
+
+.image-slider img {
+    width: 20%; /* 100% / 5 images */
+    height: 100%;
+    object-fit: cover; /* Ensures images fill the frame, cropping if necessary */
+}
+
+@keyframes scrollImages {
+    0% {
+        transform: translateX(0%);
+    }
+    15% {
+        transform: translateX(0%); /* Pause on first image */
+    }
+    20% {
+        transform: translateX(-20%); /* Scroll to second image (1 * 20%) */
+    }
+    35% {
+        transform: translateX(-20%); /* Pause on second image */
+    }
+    40% {
+        transform: translateX(-40%); /* Scroll to third image (2 * 20%) */
+    }
+    55% {
+        transform: translateX(-40%); /* Pause on third image */
+    }
+    60% {
+        transform: translateX(-60%); /* Scroll to fourth image (3 * 20%) */
+    }
+    75% {
+        transform: translateX(-60%); /* Pause on fourth image */
+    }
+    80% {
+        transform: translateX(-80%); /* Scroll to the duplicate of the first image (4 * 20%) */
+    }
+    100% {
+        transform: translateX(-80%); /* Hold on the duplicate (effectively a pause before loop) */
+    }
+}
+
+/* Ensure there's no conflict from old generic image rules if any */
+#intro-section img {
+    /* If there were generic styles like max-width:100% on all images in a section, */
+    /* they might conflict. The .image-slider img rule should be specific enough. */
 }
 
 .numbered-highlights {
@@ -246,7 +319,6 @@ a:hover {
 
 .partner-profile {
     padding-left: 1em;
-    border-left: 3px solid var(--color-accent);
 }
 
 .partner-profile h3 {
@@ -359,12 +431,37 @@ footer p {
     gap: 20px; /* Spacing between logos */
 }
 
+/* Remove old placeholder span styling */
+/* .partner-logos span {
+    font-style: italic;
+    color: #777; 
+    padding: 10px;
+    display: inline-block;
+} */
+
+/* Styling for actual partner logos */
+.partner-logos img {
+    max-height: 60px; /* Adjust as needed for consistent logo size */
+    max-width: 150px; /* Prevent very wide logos from dominating */
+    width: auto;    /* Maintain aspect ratio */
+    height: auto;   /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures the entire logo is visible */
+    margin: 5px; /* A little space around each logo */
+}
+
+/* Styling for the remaining design partner placeholder span */
 .partner-logos span {
     font-style: italic;
-    color: #777; /* Placeholder text color */
-    padding: 10px;
-    border: 1px dashed #ccc; /* Placeholder border */
-    display: inline-block;
+    color: var(--color-text);
+    opacity: 0.7;
+    padding: 10px 15px;
+    border: 1px dashed var(--color-accent);
+    border-radius: 4px;
+    display: inline-flex; /* To align with images better */
+    align-items: center;
+    justify-content: center;
+    min-height: 60px; /* Match image max-height */
+    box-sizing: border-box;
 }
 
 /* Pain Points Cards Styling */
@@ -382,24 +479,23 @@ footer p {
 
 .pain-points-cards {
     display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Spacing between cards */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-evenly;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .card {
     background-color: var(--color-section-bg);
-    border: 1px solid var(--color-header-border);
-    border-radius: 8px;
     padding: 1.5em;
-    flex-basis: calc(33.333% - 20px); /* Adjust for gap, for 3 cards */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-basis: 300px;
+    flex-grow: 1;
+    max-width: calc(33.333% - 20px);
+    min-width: 280px;
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .card h3 {
@@ -427,11 +523,8 @@ footer p {
 
 .service-tab-content {
     background-color: var(--color-section-bg);
-    padding: 1.5em;
-    margin-bottom: 1.5em; /* Space between each service block */
-    border-radius: 8px;
-    border: 1px solid var(--color-header-border);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    padding: 1.5em 2em;
+    margin-bottom: 1.5em;
 }
 
 .service-tab-content h2 {
@@ -446,12 +539,46 @@ footer p {
     margin-top: 1em;
     padding: 0.5em;
     background-color: var(--color-bg);
-    border: 1px dashed var(--color-accent);
-    border-radius: 4px;
     text-align: center;
     font-style: italic;
     color: #777;
     font-size: 0.9em;
+    /* border: 1px dashed var(--color-accent); */ /* Removed */
+    /* border-radius: 4px; */ /* Removed */
+}
+
+/* Styling for images within partner-badge on services.html */
+.partner-badge img {
+    max-height: 60px; /* Match index.html .partner-logos img */
+    max-width: 150px; /* Match index.html .partner-logos img */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: 5px; /* Add some spacing if multiple logos */
+    vertical-align: middle; /* Helps align if text is mixed with img */
+}
+
+/* Ensure the text placeholder in Design service also aligns well */
+.partner-badge {
+    display: flex; /* Use flex to align items nicely */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow logos to wrap if many */
+    gap: 10px; /* Spacing between items if they wrap or are multiple */
+    margin-top: 1em;
+    padding: 0.5em;
+    background-color: var(--color-bg);
+    min-height: 70px; /* Ensure a consistent height for the badge area */
+}
+
+/* Adjust the text placeholder within the flex context */
+#Design .partner-badge {
+    /* This specific badge only has text, so default flex behavior is fine */
+    /* We can add specific styling if the text placeholder needs it */
+    color: var(--color-text);
+    opacity: 0.7;
+    border: 1px dashed var(--color-accent);
+    border-radius: 4px;
 }
 
 /* Process Page Timeline Styling */
@@ -507,10 +634,8 @@ footer p {
 
 .timeline-step-content {
     background-color: var(--color-section-bg);
-    padding: 1.5em;
-    border-radius: 8px;
-    border: 1px solid var(--color-header-border);
-    margin-left: 10px; /* Spacing from the number */
+    padding: 1.5em 2em;
+    margin-left: 10px;
     flex: 1;
 }
 
@@ -556,8 +681,7 @@ footer p {
 #contact-form textarea {
     width: 100%;
     padding: 0.8em;
-    border: 1px solid var(--color-header-border);
-    border-radius: 5px;
+    border-bottom: 2px solid var(--color-header-border);
     font-family: var(--font-body);
     font-size: 1em;
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
@@ -578,4 +702,10 @@ footer p {
 .map-placeholder {
     /* Styles for img are inline, this is for any container needs */
     margin-top: 1em;
+}
+
+/* For the map image placeholder, remove inline border from HTML if it exists, or target here */
+.map-placeholder img {
+    /* border:1px solid #ccc; */ /* Referenced from inline style, ensure removed or overridden */
+    border: none; /* Explicitly remove border */
 } 
