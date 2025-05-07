@@ -132,11 +132,32 @@ a:hover {
 }
 
 .full-width-hero {
-    background-color: var(--color-accent);
-    color: var(--color-header-bg);
-    padding: 5em 1.5em;
+    /* background-color: var(--color-accent); */ /* Replaced by background image */
+    background-image: url('images/vet med 1 .png');
+    background-size: cover;
+    background-position: center center;
+    position: relative; /* For the overlay */
+    color: var(--color-header-bg); 
+    padding: 6em 1.5em; /* Adjusted padding for better visual with bg image */
     text-align: center;
-    margin-bottom: 2.5em;
+    margin-bottom: 2.5em; 
+}
+
+/* Add an overlay to soften the image behind the text */
+.full-width-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark semi-transparent overlay */
+    z-index: 1; /* Ensure overlay is behind content but above background image */
+}
+
+.hero-content {
+    position: relative; /* Ensure content is above the overlay */
+    z-index: 2;
 }
 
 .hero-content h1 {
