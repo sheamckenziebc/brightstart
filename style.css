@@ -314,20 +314,25 @@ section#hero.full-width-hero div.hero-content h1 {
 
 /* Partner Page Specific Styles */
 .partner-category {
-    margin-bottom: 2em;
+    margin-bottom: 40px; /* Add space between partner categories */
 }
 
 .partner-profile {
-    padding-left: 1em;
+    /* display: flex; */ /* Uncomment if side-by-side layout of bio and org is desired */
+    /* flex-wrap: wrap; */
+    /* gap: 20px; */
 }
 
-.partner-profile h3 {
-    color: var(--color-accent);
-    opacity: 0.9;
+.partner-individual-bio,
+.partner-organization {
+    /* flex: 1; */ /* If using flex for side-by-side */
+    /* min-width: 300px; */ /* If using flex for side-by-side */
+    margin-bottom: 20px; /* Space between bio and org block if stacked */
 }
 
-.partner-profile p strong {
-    font-weight: 500;
+.partner-organization h4 {
+    text-align: center; /* Center the organization name above the logo */
+    margin-bottom: 0.5em;
 }
 
 /* Contact Page Specific Styles */
@@ -425,43 +430,42 @@ footer p {
 
 .partner-logos {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 20px; /* Spacing between logos */
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
 }
 
-/* Remove old placeholder span styling */
-/* .partner-logos span {
-    font-style: italic;
-    color: #777; 
-    padding: 10px;
-    display: inline-block;
-} */
-
-/* Styling for actual partner logos */
-.partner-logos img {
-    max-height: 60px; /* Adjust as needed for consistent logo size */
-    max-width: 150px; /* Prevent very wide logos from dominating */
-    width: auto;    /* Maintain aspect ratio */
-    height: auto;   /* Maintain aspect ratio */
-    object-fit: contain; /* Ensures the entire logo is visible */
-    margin: 5px; /* A little space around each logo */
+/* Styles for actual image logos in index.html trust bar and partners.html partner sections */
+.partner-logos img,
+img.partner-logo {
+    display: block; /* Allows margin auto for horizontal centering */
+    max-height: 50px;
+    max-width: 150px; /* Prevents very wide logos from taking too much space */
+    object-fit: contain; /* Ensures the image scales correctly within the bounds */
+    margin: 1em auto; /* Adds some vertical spacing and centers horizontally */
+    flex-shrink: 0; /* Prevent logos from shrinking too much if space is tight in flex container */
 }
 
-/* Styling for the remaining design partner placeholder span */
-.partner-logos span {
-    font-style: italic;
-    color: var(--color-text);
-    opacity: 0.7;
-    padding: 10px 15px;
-    border: 1px dashed var(--color-accent);
-    border-radius: 4px;
-    display: inline-flex; /* To align with images better */
+/* Styles for text-based placeholders for logos */
+.partner-logos span, /* Placeholder in index.html trust bar */
+.logo-placeholder {   /* Placeholder on partners.html */
+    display: flex; /* For centering text inside */
     align-items: center;
     justify-content: center;
-    min-height: 60px; /* Match image max-height */
-    box-sizing: border-box;
+    height: 50px;
+    min-width: 100px; /* Give it some base width */
+    max-width: 150px;
+    font-style: italic;
+    color: var(--color-text-muted, #777);
+    background-color: var(--color-bg-alt, #f0f0f0); /* Use a variable or a light grey */
+    padding: 5px 10px;
+    border: 1px dashed var(--color-accent, #5BA3C0);
+    border-radius: 4px;
+    margin: 1em auto; /* Consistent vertical spacing and horizontal centering */
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+    text-align: center;
 }
 
 /* Pain Points Cards Styling */
@@ -536,49 +540,16 @@ footer p {
 }
 
 .partner-badge {
-    margin-top: 1em;
-    padding: 0.5em;
-    background-color: var(--color-bg);
-    text-align: center;
-    font-style: italic;
-    color: #777;
-    font-size: 0.9em;
-    /* border: 1px dashed var(--color-accent); */ /* Removed */
-    /* border-radius: 4px; */ /* Removed */
-}
-
-/* Styling for images within partner-badge on services.html */
-.partner-badge img {
-    max-height: 60px; /* Match index.html .partner-logos img */
-    max-width: 150px; /* Match index.html .partner-logos img */
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    margin: 5px; /* Add some spacing if multiple logos */
-    vertical-align: middle; /* Helps align if text is mixed with img */
-}
-
-/* Ensure the text placeholder in Design service also aligns well */
-.partner-badge {
-    display: flex; /* Use flex to align items nicely */
-    justify-content: center;
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
     align-items: center;
-    flex-wrap: wrap; /* Allow logos to wrap if many */
-    gap: 10px; /* Spacing between items if they wrap or are multiple */
-    margin-top: 1em;
-    padding: 0.5em;
-    background-color: var(--color-bg);
-    min-height: 70px; /* Ensure a consistent height for the badge area */
+    justify-content: flex-start; /* Or center if preferred: justify-content: center; text-align: center; */
 }
 
-/* Adjust the text placeholder within the flex context */
-#Design .partner-badge {
-    /* This specific badge only has text, so default flex behavior is fine */
-    /* We can add specific styling if the text placeholder needs it */
-    color: var(--color-text);
-    opacity: 0.7;
-    border: 1px dashed var(--color-accent);
-    border-radius: 4px;
+.partner-badge img { /* If images are ever re-introduced here directly */
+    max-height: 40px; /* Slightly smaller for secondary badges if needed */
+    object-fit: contain;
 }
 
 /* Process Page Timeline Styling */
