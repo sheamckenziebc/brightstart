@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sheamckenziebc.github.io/brightstart/sitemap.xml 
