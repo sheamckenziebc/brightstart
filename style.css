@@ -336,24 +336,42 @@ section#hero.full-width-hero div.hero-content h1 {
 }
 
 .partner-profile {
-    /* display: flex; */ /* Uncomment if side-by-side layout of bio and org is desired */
-    /* flex-wrap: wrap; */
-    /* gap: 20px; */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 4%; 
+    flex-wrap: wrap; 
 }
 
-.partner-individual-bio,
+.partner-individual-bio {
+    flex: 1 1 48%; /* Grow, shrink, basis for ~half width */
+    min-width: 280px; /* Minimum width before wrapping */
+    margin-bottom: 20px; /* Spacing when items wrap to new line */
+    /* Text content will default to left-aligned */
+}
+
+/* Ensure h3 within partner bio has no top margin for alignment */
+.partner-individual-bio h3 {
+    margin-top: 0;
+    /* Font size, color, weight, and margin-bottom are inherited from general h3 styles */
+}
+
 .partner-organization {
-    /* flex: 1; */ /* If using flex for side-by-side */
-    /* min-width: 300px; */ /* If using flex for side-by-side */
-    display: flex;             /* New */
-    flex-direction: column;    /* New */
-    align-items: center;       /* New: centers flex items horizontally */
-    margin-bottom: 20px; /* Space between bio and org block if stacked */
+    flex: 1 1 48%; /* Grow, shrink, basis for ~half width */
+    min-width: 280px; /* Minimum width before wrapping */
+    display: flex; /* For internal content alignment */
+    flex-direction: column;
+    align-items: center; /* Centers h4, logo, p, badge within this block */
+    margin-bottom: 20px; /* Spacing when items wrap to new line */
 }
 
 .partner-organization h4 {
-    text-align: center; /* Retain for text within h4, even if block is centered */
-    margin-bottom: 0.5em;
+    font-size: 1.5em;            /* Match h3 */
+    color: var(--color-heading); /* Match h3 */
+    font-weight: 400;            /* Match h3 */
+    text-align: center;          /* Keep existing alignment */
+    margin-top: 0;               /* Align with h3 */
+    margin-bottom: 0.5em;        /* Consistent with h3 */
 }
 
 /* Contact Page Specific Styles */
@@ -375,6 +393,11 @@ footer {
 
 .footer-contact {
     margin-bottom: 1em;
+}
+
+/* Added to make footer contact links white */
+footer .footer-contact a {
+    color: #FFFFFF; /* White color for better visibility */
 }
 
 .footer-nav {
@@ -446,7 +469,7 @@ footer p {
 #trust-bar {
     padding-top: 1em;
     padding-bottom: 1em;
-    background-color: var(--color-bg); /* Match body background or slightly different */
+    background-color: var(--color-section-bg); /* Changed from --color-bg to make it white */
 }
 
 #trust-bar h3 {
