@@ -345,11 +345,14 @@ section#hero.full-width-hero div.hero-content h1 {
 .partner-organization {
     /* flex: 1; */ /* If using flex for side-by-side */
     /* min-width: 300px; */ /* If using flex for side-by-side */
+    display: flex;             /* New */
+    flex-direction: column;    /* New */
+    align-items: center;       /* New: centers flex items horizontally */
     margin-bottom: 20px; /* Space between bio and org block if stacked */
 }
 
 .partner-organization h4 {
-    text-align: center; /* Center the organization name above the logo */
+    text-align: center; /* Retain for text within h4, even if block is centered */
     margin-bottom: 0.5em;
 }
 
