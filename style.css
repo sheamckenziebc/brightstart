@@ -47,9 +47,15 @@ nav {
 }
 
 .logo {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: var(--color-logo);
+    height: 60px;
+    width: auto;
+    max-width: 300px;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
 }
 
 .header-contact {
@@ -449,6 +455,11 @@ footer p {
     nav {
         flex-direction: column;
         align-items: center;
+    }
+
+    .logo {
+        height: 45px;
+        max-width: 220px;
     }
 
     .header-contact {
